@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Tambah mahasiswa</title>
+    <title>Update Mahasiswa</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
           th:href="@{/webjars/materializecss/0.100.2/css/materialize.min.css}"/>
@@ -23,6 +23,7 @@
 <!--/*@thymesVar id="mhs" type="com.maryanto.dimas.model.Mahasiswa"*/-->
 <form action="/mahasiswa/new"
       th:action="@{/mahasiswa/new}" th:method="post" th:object="${mhs}" method="post">
+    <input type="hidden" name="id" th:field="*{id}"/>
     <div class="input-field row">
         <label for="nim">NIM</label>
         <input type="text" name="nim" id="nim" th:field="*{nim}"/>

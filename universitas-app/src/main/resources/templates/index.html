@@ -1,22 +1,36 @@
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home Application</title>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
           th:href="@{/webjars/materializecss/0.100.2/css/materialize.min.css}"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <script src="/webjars/jquery/3.2.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"
+            th:src="@{/webjars/materializecss/0.100.2/js/materialize.min.js}"></script>
 </head>
 <body>
-<h1>
-    Hamalan Utama
-</h1>
 
-<h1 class="text-besar">
-    Masldfjlskdjf
-</h1>
-
-<button class="waves-effect waves-light btn red">
-    <span class="purple accent-1">Kirim</span>
-</button>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+                <a href="/mahasiswa/new"
+                   th:href="@{/mahasiswa/new}">
+                    Pendaftaran Mahasiswa
+                </a>
+                <a href="/mahasiswa/"
+                   th:href="@{/mahasiswa/}">
+                    List Mahasiswa
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 <div sec:authorize="isAuthenticated()">
     <!--yang tampil udah login-->
