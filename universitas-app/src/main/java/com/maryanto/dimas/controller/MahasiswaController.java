@@ -3,13 +3,16 @@ package com.maryanto.dimas.controller;
 import com.maryanto.dimas.model.Mahasiswa;
 import com.maryanto.dimas.repository.MahasiswaRepository;
 import com.maryanto.dimas.repository.UserRepository;
-import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.sql.Date;
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/mahasiswa")
@@ -56,11 +59,16 @@ public class MahasiswaController {
     }
 
     @GetMapping("/report")
-    public ModelAndView showReport() {
+    public ModelAndView showReport(Authentication auth) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("report_DaftarMahasiswa");
         mav.addObject("format", "pdf");
-        mav.addObject("datasource", new JREmptyDataSource());
+        mav.addObject("tanggalCetak",
+                Date.valueOf(LocalDate.now()));
+        mav.addObject("datasource",
+                new JRBeanCollectionDataSource(mahasiswaRepository.findAll()));
+        mav.addObject("pricipal",
+                userRepository.findByUsername(auth.getName()));
         return mav;
     }
 
