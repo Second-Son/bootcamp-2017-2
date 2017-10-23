@@ -69,5 +69,9 @@ b = {
 }
 console.log("nilai object b.person = " + b.person.rw);
 
+b = null;
+console.log("tipe data null adalah " + typeof (b));
 
+nama = undefined;
 
+console.log("variable dengan nama is availabled? " + nama);
